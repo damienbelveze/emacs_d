@@ -1,0 +1,33 @@
+(package-initialize)
+(require 'package)
+(add-to-list
+   'package-archives
+   ;; '("melpa" . "http://stable.melpa.org/packages/") ; many packages won't show if using stable
+   '("melpa" . "https://melpa.org/packages/")
+   t)
+(package-refresh-contents)
+(add-to-list
+   'package-archives
+   '("org" . "http://orgmode.org/elpa/") t)
+(load-theme 'tango-dark)
+(executable-find "sqlite3")
+(add-to-list 'exec-path "path/to/sqlite3")
+(setq org-roam-directory "~/Nextcloud/org-roam")
+(setq org-roam-index-file "~/Nextcloud/org-roam/index.org")
+(add-hook 'after-init-hook 'org-roam-mode)
+
+;; Activate org-zotxt-mode in org-mode buffers
+(add-hook 'org-mode-hook (lambda () (org-zotxt-mode 1)))
+(add-hook 'TeX-mode-hook 'zotelo-minor-mode)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages '(zotxt org-roam-bibtex helm-bibtex org-roam org)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
